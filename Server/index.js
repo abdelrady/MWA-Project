@@ -7,11 +7,11 @@ const path = require("path");
 const mongoose = require('mongoose')
 
 const usersRoutes = require("./api/UsersApi");
-const config = require("server-config")
+const productRoutes = require("./api/ProductsApi");
+const config = require("./server-config")
 
 const logFileStream = fs.createWriteStream(path.join(__dirname, "access.log"), { encoding: "utf8" });
 const app = express();
-let db = null;
 
 app
     .use(cors())
@@ -19,15 +19,13 @@ app
     .use(helmet())
     .use(express.json())
     .use(express.urlencoded())
-    .use(express.static('static'))
+    .use("/static", express.static('static'))
+    // .use("/modules", express.static('node_modules'))
     .use("/api/users", usersRoutes)
+    .use("/api/products", productRoutes)
 
 //  MongoDB connection
-const dbUrl = 'mongodb://localhost:27017/virtualstandups';
-
-mongoose.connect(config.dbUrl, { useNewUrlParser: true }, { test: "test" }, { efrem: 'Hi' })
-
-
+mongoose.connect(config.dbUrl, { useNewUrlParser: true })
 const db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error:'))
 db.once('open', function () {

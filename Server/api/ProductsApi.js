@@ -1,11 +1,11 @@
 const router = require("express").Router();
-const User = require("../model/User");
+const Product = require("../model/Product");
 
-router.get("/", (req, res, next) => {
-    User.find({})
+router.get("/all", (req, res, next) => {
+    Product.find({})
         .sort({ 'name': 1 })
         .exec()
-        .then(users => res.status(200).json({ success: true, users }))
+        .then(products => res.status(200).json({ success: true, products }))
         .catch(err => res.status(500)
             .json({
                 success: false,

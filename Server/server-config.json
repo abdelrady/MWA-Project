@@ -1,4 +1,5 @@
 {
     "port": 8080,
-    "dbUrl": ""
+    "dbUrl_local": "mongodb://localhost:27017/mwaproject",
+    "dbUrl": "mongodb+srv://sa:p@$$w0rd@mwacluster-q7czt.mongodb.net/test?retryWrites=true&w=majority"
 }
