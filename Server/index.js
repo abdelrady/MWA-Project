@@ -24,7 +24,7 @@ app
 
 //  MongoDB connection
 const dbUrl = 'mongodb://localhost:27017/virtualstandups';
-mongoose.connect(config.dbUrl, { useNewUrlParser: true })
+mongoose.connect(config.dbUrl, { useNewUrlParser: true }, {test: "test"})
 
 const db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error:'))
