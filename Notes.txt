@@ -1,0 +1,32 @@
+Update ignore list
+add client + server folders
+add jwt tokens
+draw screens
+atlas
+
+
+schema
+
+	Users
+		Id
+		email
+		first name
+		last name
+		password
+		isAdmin
+		cart: [{productid: 555, quantity: 10}, {}, {}]
+
+	Products
+		Tags
+		Desc
+		Name
+		Quantity
+		Price
+		imageid
+
+	Images
+		Id
+		Data/blob
+
+
+<img [src]="http://localhost:8080/api/image/{{image.id}}"/>
