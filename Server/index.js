@@ -5,10 +5,13 @@ const helmet = require("helmet");
 const fs = require("fs");
 const path = require("path");
 const mongoose = require('mongoose')
-var compression = require('compression')
+const compression = require('compression')
+const fileUpload = require('express-fileupload');
+const responseTime = require('response-time')
 
 const usersRoutes = require("./api/UsersApi");
 const productRoutes = require("./api/ProductsApi");
+const imageRoutes = require("./api/ImagesApi");
 const config = require("./server-config")
 
 const logFileStream = fs.createWriteStream(path.join(__dirname, "access.log"), { encoding: "utf8" });
@@ -21,10 +24,16 @@ app
     .use(compression())
     .use(express.json())
     .use(express.urlencoded())
+    .use(fileUpload())
+    .use(responseTime())
     .use("/static", express.static('static'))
     // .use("/modules", express.static('node_modules'))
     .use("/api/users", usersRoutes)
     .use("/api/products", productRoutes)
+    .use("/api/images", (req, res, next) => {
+        res.setHeader("Cache-Control", "public, max-age=2592000");
+        next();
+    }, imageRoutes)
 
 // Global error middle ware
 app.use(function (err, req, res, next) {
