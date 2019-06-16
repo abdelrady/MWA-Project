@@ -3,6 +3,7 @@ import { ProductsService } from '../products.service';
 import { Product } from '../product';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-list-products',
   templateUrl: './list-products.component.html',
@@ -10,12 +11,27 @@ import { Router } from '@angular/router';
 })
 
 export class ListProductsComponent implements OnInit {
-  products: Product[];
-
+  //products: Product[];
+  private products: Product[] = [
+    {
+      name: "Iphone",
+      company: "Apple",
+      imageId: "bb76"
+    },
+    {
+      name: "Iphone",
+      company: "Apple",
+      imageId: "bb76"
+    },
+    {
+      name: "Iphone",
+      company: "Apple",
+      imageId: "bb76"
+    }
+  ]
   constructor(private productService: ProductsService, private router: Router) { }
 
   ngOnInit() {
-    console.log("test");
     this.getAllProducts();
   }
 

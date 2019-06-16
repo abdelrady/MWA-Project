@@ -9,6 +9,17 @@ import {first} from 'rxjs/operators'
 })
 
 export class RegisterComponet implements  OnInit {
+    registerForm : FormGroup;
+    loading = false;
+    submitted = false;
+
+  constructor(
+    private  FormBuilder : FormBuilder,
+    private router :Router,
+
+  ){
+
+  }
 
   ngOnInit(){
 

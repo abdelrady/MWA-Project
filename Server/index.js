@@ -11,6 +11,7 @@ const responseTime = require('response-time')
 
 const usersRoutes = require("./api/UsersApi");
 const productRoutes = require("./api/ProductsApi");
+const auth = require("./api/AuthApi");
 const imageRoutes = require("./api/ImagesApi");
 const config = require("./server-config")
 
@@ -30,7 +31,8 @@ app
     // .use("/modules", express.static('node_modules'))
     .use("/api/users", usersRoutes)
     .use("/api/products", productRoutes)
-    .use("/api/images", (req, res, next) => {
+    .use("/api/auth", auth.router)
+    .use("/api/images", /*auth.validUser, */(req, res, next) => {
         res.setHeader("Cache-Control", "public, max-age=2592000");
         next();
     }, imageRoutes)
