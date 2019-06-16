@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-// import { HttpClient } from '@angular/common/http';
-// import { Product } from '../Product';
+
+import { HttpClient } from '@angular/common/http';
+import { Product } from './Product'
 
 
-@Injectable({
-  providedIn: 'root'
-})
+
+@Injectable({ providedIn: 'root' })
 export class ProductsService {
 
-  constructor() { }
+ 
 
   // addProduct(product: Product){
   //   return this.http.post(this.baseurl + 'Products', product);
@@ -21,6 +21,14 @@ export class ProductsService {
   // updateProduct(product: Product){
   //   return this.http.put(this.baseurl + 'Products' + '/' + product._id, product);
   // }
+  constructor(private http: HttpClient) { }
+  baseurl: string = "http://localhost:8080/";
+  getAllProducts() {
+    return this.http.get<Product[]>(this.baseurl + 'Products');
+  }
 
 
 }
+
+
+
