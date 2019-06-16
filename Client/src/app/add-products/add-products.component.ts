@@ -30,7 +30,7 @@ export class AddProductComponent implements OnInit {
 
   onSubmit(){
     this.submitted = true;
-    
+
     if(this.addForm.valid){
       this.productService.addProduct(this.addForm.value)
       .subscribe( data => {
