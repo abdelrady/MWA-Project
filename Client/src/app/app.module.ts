@@ -9,6 +9,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ProductsService } from './products.service';
 import { HttpClientModule } from '@angular/common/http';
 import {  ReactiveFormsModule } from '@angular/forms'
+import { ErrorComponent } from './error-page/error.component'
+import { RegisterComponet} from './register-products/register-products.component'
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import {  ReactiveFormsModule } from '@angular/forms'
     ListProductsComponent,
     AddProductComponent,
     ProductDetailsComponent,
-    
+    ErrorComponent,
+    RegisterComponet,
   ],
   imports: [
     BrowserModule,
