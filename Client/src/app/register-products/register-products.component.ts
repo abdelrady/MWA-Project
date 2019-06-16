@@ -17,6 +17,8 @@ export class RegisterComponet implements  OnInit {
     private  FormBuilder : FormBuilder,
     private router :Router,
 
+
+
   ){
 
   }
