@@ -17,12 +17,12 @@ schema
 		cart: [{productid: 555, quantity: 10}, {}, {}]
 
 	Products
-		Tags
-		Desc
-		Name
-		Quantity
-		Price
-		imageid
+		Categories: ["Electronics", "Photography", "US", "Luxury"]
+		Description: "Item description bla bla bla" 
+		Name: "Camera - Asus"
+		Quantity: 40
+		Price : 200
+		imageid: ObjectId(2830912-329023-9231-923)
 
 	Images
 		Id
