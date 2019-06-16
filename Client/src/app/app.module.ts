@@ -8,9 +8,11 @@ import { AddProductComponent } from './add-products/add-products.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductsService } from './products.service';
 import { HttpClientModule } from '@angular/common/http';
-import {  ReactiveFormsModule } from '@angular/forms'
 import { ErrorComponent } from './error-page/error.component'
 import { RegisterComponet} from './register-products/register-products.component'
+import {  ReactiveFormsModule } from '@angular/forms';
+import { EditProductComponent } from './edit-product/edit-product.component'
+
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { RegisterComponet} from './register-products/register-products.component
     ProductDetailsComponent,
     ErrorComponent,
     RegisterComponet,
+    EditProductComponent,
+
   ],
   imports: [
     BrowserModule,
