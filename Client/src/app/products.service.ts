@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
-import { Product } from './product'
+import { product } from './product'
 
 
 
 @Injectable({ providedIn: 'root' })
 export class ProductsService {
 
- 
 
-  addProduct(product: Product){
+
+  addProduct(product: product){
     return this.http.post(this.baseurl + 'Products', product);
   }
 
@@ -24,11 +24,8 @@ export class ProductsService {
   constructor(private http: HttpClient) { }
   baseurl: string = "http://localhost:8080/";
   getAllProducts() {
-    return this.http.get<Product[]>(this.baseurl + 'Products');
+    return this.http.get<product[]>(this.baseurl + 'Products');
   }
 
 
 }
-
-
-
