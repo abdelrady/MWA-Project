@@ -1,0 +1,16 @@
+
+POST http://localhost:8080/api/auth/signup HTTP/1.1
+content-type: application/json
+
+{"firstName":"Abdelrady","lastName":"Tantawy","email":"atantawy@mum.edu","password":"123","confirmPassword":"123", "isAdmin": true}
+###
+
+
+POST http://localhost:8080/api/auth/login HTTP/1.1
+content-type: application/json
+
+{"password":"123","email":"atantawy@mum.edu"}
+
+###
+GET http://localhost:8080/api/auth/test HTTP/1.1
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc0FkbWluIjp0cnVlLCJfaWQiOiI1ZDA2YzQ1NzVjZDNlYTFkMWMyNDJmNWUiLCJmaXJzdE5hbWUiOiJBYmRlbHJhZHkiLCJsYXN0TmFtZSI6IlRhbnRhd3kiLCJlbWFpbCI6ImF0YW50YXd5QG11bS5lZHUiLCJfX3YiOjAsImlhdCI6MTU2MDcyNDcyM30.O-Gv1CrDdpRUxrpmTJiHMCjAgba8oQi4EJ_Ne8Jxd82j_EEzEI27Cpy9GycI_BzxOTrouatseL_upHbvzuH0bg
