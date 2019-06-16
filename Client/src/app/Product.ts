@@ -1,4 +1,4 @@
-export class Product {
+export class product {
     //_id: Object;
     // tags: number;
     name: string;
