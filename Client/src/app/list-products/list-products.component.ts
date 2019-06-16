@@ -9,8 +9,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./list-products.component.css']
 })
 
-
-//hjwqhsjh
 export class ListProductsComponent implements OnInit {
   products: Product[];
 
