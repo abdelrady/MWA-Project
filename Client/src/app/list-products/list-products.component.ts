@@ -8,6 +8,9 @@ import { Router } from '@angular/router';
   templateUrl: './list-products.component.html',
   styleUrls: ['./list-products.component.css']
 })
+
+
+//hjwqhsjh
 export class ListProductsComponent implements OnInit {
   products: Product[];
 
