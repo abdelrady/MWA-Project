@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import { environment } from './../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Product } from './product'
 
@@ -7,10 +7,18 @@ import { Product } from './product'
 
 @Injectable({ providedIn: 'root' })
 export class ProductsService {
+  constructor(private http: HttpClient) { }
+  baseurl: string = environment.apiUrl;
 
- 
+  getAllProducts() {
+    return this.http.get<Product[]>(this.baseurl + 'Products');
+  }
 
-  addProduct(product: Product){
+  getProductById(id: string) {
+    return this.http.get<Product>(this.baseurl + 'Products' + '/' + id);
+  }
+
+  addProduct(product: Product) {
     return this.http.post(this.baseurl + 'Products', product);
   }
 
@@ -21,12 +29,6 @@ export class ProductsService {
   // updateProduct(product: Product){
   //   return this.http.put(this.baseurl + 'Products' + '/' + product._id, product);
   // }
-  constructor(private http: HttpClient) { }
-  baseurl: string = "http://localhost:8080/";
-  getAllProducts() {
-    return this.http.get<Product[]>(this.baseurl + 'Products');
-  }
-
 
 }
 
