@@ -10,9 +10,9 @@ export class ProductsService {
 
  
 
-  // addProduct(product: Product){
-  //   return this.http.post(this.baseurl + 'Products', product);
-  // }
+  addProduct(product: Product){
+    return this.http.post(this.baseurl + 'Products', product);
+  }
 
   // deleteProduct(id: string){
   //   return this.http.delete(this.baseurl + 'Products' + '/' + id);

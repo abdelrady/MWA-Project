@@ -11,7 +11,7 @@ import { Router } from "@angular/router";
 })
 export class AddProductComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private productService: ProductService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private productService: ProductsService) { }
 
   addForm: FormGroup;
   submitted = false;
