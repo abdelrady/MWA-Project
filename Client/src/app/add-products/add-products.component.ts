@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from "@angular/forms";
+import { FormBuilder, FormControl, Validators } from "@angular/forms";
+import { FormGroup } from '@angular/forms'
+import { ReactiveFormsModule } from '@angular/forms'
 import { ProductsService } from '../products.service';
 import { first } from "rxjs/operators";
 import { Router } from "@angular/router";
