@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../Product';
+//import { Product } from '../product';
+import { environment } from 'src/environments/environment';
+import { ActivatedRoute } from '@angular/router';
+import { ProductsService } from '../products.service';
 
 @Component({
   selector: 'app-product-details',
@@ -14,7 +18,7 @@ export class ProductDetailsComponent implements OnInit {
     imageId: "bb76"
   }
 
-  constructor() { }
+
 
   ngOnInit() {
   }

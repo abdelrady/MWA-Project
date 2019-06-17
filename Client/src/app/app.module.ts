@@ -7,13 +7,14 @@ import { AppComponent } from './app.component';
 import { ListProductsComponent } from './list-products/list-products.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductsService } from './products.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorComponent } from './error-page/error.component'
-import { RegisterComponet} from './register-products/register-products.component'
-import {  ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponet } from './register-products/register-products.component'
+import { ReactiveFormsModule } from '@angular/forms';
 import { EditProductComponent } from './edit-product/edit-product.component';
-import { LoginComponent } from './account/login/login.component'
-//import {LoginComponent} from './login/login.component'
+import { LoginComponent } from './account/login/login.component';
+import { SearchComponent } from './components/product/search/search.component'
+import { TokenInterceptor } from './token.interceptor';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { LoginComponent } from './account/login/login.component'
     ErrorComponent,
     RegisterComponet,
     EditProductComponent,
-    LoginComponent
+    LoginComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,9 @@ import { LoginComponent } from './account/login/login.component'
     ReactiveFormsModule,
     NgbModule
   ],
-  providers: [ProductsService,CookieService],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    ProductsService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
