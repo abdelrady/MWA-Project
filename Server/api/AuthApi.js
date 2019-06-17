@@ -38,7 +38,8 @@ router.post("/signup", async (req, res, next) => {
 
 router.post("/login", async (req, res, next) => {
     let user = await User.findOne({ "email": req.body.email }, {cartItems: 0});
-    if (user) {
+    console.log(req.body.username  + req.body.password);
+    if (req.body.username == 1 && req.body.password ==1) {
         const { cartItems, password, ...publicUser } = user._doc;
         const isValid = await bcrypt.compare(req.body.password, password);
         if (!isValid) res.json({ success: false });

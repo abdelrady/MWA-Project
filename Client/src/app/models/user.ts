@@ -1,4 +1,5 @@
-export class user {
+import {baseBean} from './baseBean'
+export class user extends baseBean<user> {
     id: number;
     username: string;
     password: string;
@@ -7,4 +8,5 @@ export class user {
     token: string;
     email: string;
     admin: string; //1 ture  0 fales
+    tocken : string;
 }

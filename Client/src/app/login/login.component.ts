@@ -3,7 +3,12 @@ import { Router} from '@angular/router';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { UsersService} from '../users.service'
+import { UsersService} from '../users.service';
+import { user } from '../models';
+import { baseBean } from '../models'
+import { CookieService } from 'ngx-cookie-service';
+
+
 
 @Component({templateUrl: 'login.component.html'})
 export class LoginComponent implements OnInit {
@@ -11,11 +16,12 @@ export class LoginComponent implements OnInit {
     loading = false;
     submitted = false;
     returnUrl: string;
-
+    time: number = 2*60*60*1000;
     constructor(
         private formBuilder: FormBuilder,
         private router: Router,
-        private userService : UsersService
+        private userService : UsersService,
+        private cookieService : CookieService
     ) {
 
     }
@@ -42,8 +48,16 @@ export class LoginComponent implements OnInit {
         this.userService.login(this.f.username.value, this.f.password.value)
             .pipe(first())
             .subscribe(
-                data => {
-                    console.log("1"+  data.user.username);
+                (data: baseBean<user>) => {
+                    if(data.success){
+                        this.router.navigate(['./listproducts']);
+                        console.log(data.token)
+                        // this.cookieService.set("token",data.T.tocken,new Date(new Date().getTime() + this.time));
+                        //
+                        // this.cookieService.set("userName",response.data.name,new Date(new Date().getTime() + this.time));
+
+                    }
+                    // console.log("1"+  data.user.username);
                     // this.router.navigate(['/']);
                 },
                 error => {

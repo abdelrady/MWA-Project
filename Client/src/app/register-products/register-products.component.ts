@@ -6,6 +6,7 @@ import { first } from 'rxjs/operators'
 
 import { UsersService} from '../users.service'
 import { user } from '../models';
+import { baseBean } from '../models'
 
 @Component({
   templateUrl: './register-products.component.html'
@@ -49,13 +50,12 @@ export class RegisterComponet implements  OnInit {
     this.userService.register(this.registerForm.value)
         .pipe(first())
         .subscribe(
-          data=>{
-            // this.user = data;
-              console.log("1");
-            // this.router.navigate(['./login']);
-            this.loading = false;
-            // TODO: return home page
-          },
+          (data : baseBean<user>)=>{
+          if(data.success){
+              this.router.navigate(['./login']);
+          }else{
+                this.loading = false;
+          }},
           error=>{
             this.loading = false;
           }
