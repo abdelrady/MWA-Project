@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../products.service';
-import { Product } from '../product';
+import { product } from '../product';
 import { Router } from '@angular/router';
+//import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
 
 export class ListProductsComponent implements OnInit {
   //products: Product[];
-  private products: Product[] = [
+  private products: product[] = [
     {
       name: "Iphone",
       company: "Apple",
@@ -34,10 +35,14 @@ export class ListProductsComponent implements OnInit {
   ngOnInit() {
     this.getAllProducts();
   }
-
   getAllProducts(): void {
     this.productService.getAllProducts().subscribe(data => {
       this.products = data;
     });
   };
+
+
+
+
+
 }

@@ -13,7 +13,7 @@ export class UsersService {
     console.log(environment.apiUrl);
    }
 
-   register(){
+   register(user : user){
       return this.Http.post(`${environment.apiUrl}/users/register`, user);
    }
 
