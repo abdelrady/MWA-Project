@@ -1,4 +1,5 @@
 export class Product {
+    //ErrorMsg:String;
     _id?: Object;
     tags: String;
     name: string;
