@@ -51,14 +51,15 @@ export class LoginComponent implements OnInit {
                 (data: baseBean<user>) => {
                     if(data.success){
                         this.router.navigate(['./listproducts']);
-                        console.log(data.token)
-                        // this.cookieService.set("token",data.T.tocken,new Date(new Date().getTime() + this.time));
-                        //
-                        // this.cookieService.set("userName",response.data.name,new Date(new Date().getTime() + this.time));
 
+                        this.cookieService.set("token",data.token,new Date(new Date().getTime() + this.time));
+                        this.cookieService.set("userName",data.T.userName,new Date(new Date().getTime() + this.time));
+
+                    }else{
+
+                      //// TODO:  add error infor
+                      this.loading = false;
                     }
-                    // console.log("1"+  data.user.username);
-                    // this.router.navigate(['/']);
                 },
                 error => {
                     this.loading = false;
