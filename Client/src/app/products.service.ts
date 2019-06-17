@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from './../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Product } from './product'
+import { Product } from './Product'
 
 
 
@@ -38,7 +38,8 @@ export class ProductsService {
   }
 
   updateProduct(product: Product) {
-    return this.http.put(this.baseurl + '/Products' + '/' + product._id, product);
+    console.log(product)
+       return this.http.put(this.baseurl + '/Products' + '/' + product._id, product)
   }
 
 }
