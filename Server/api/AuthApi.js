@@ -29,17 +29,15 @@ router.post("/signup", async (req, res, next) => {
         lastName: req.body.lastName,
         email: req.body.email,
         isAdmin: req.body.isAdmin,
-        username : req.body.username,
         cartItems: []
     });
     await user.save();
-    res.status(201).json({ success: true , user}).end();
+    res.status(201).json({ success: true, user }).end();
 });
 
 router.post("/login", async (req, res, next) => {
-    let user = await User.findOne({ "email": req.body.email }, {cartItems: 0});
-    console.log(req.body.username  + req.body.password);
-    if (req.body.username == 1 && req.body.password ==1) {
+    let user = await User.findOne({ "email": req.body.email });
+    if (req.body.email && req.body.password && user) {
         const { cartItems, password, ...publicUser } = user._doc;
         const isValid = await bcrypt.compare(req.body.password, password);
         if (!isValid) res.json({ success: false });
@@ -55,8 +53,8 @@ router.post("/login", async (req, res, next) => {
     }
 });
 
-router.get("/test", authMiddlerWare, (req, res, next)=>{
-    res.json({userId: req.userId});
+router.get("/test", authMiddlerWare, (req, res, next) => {
+    res.json({ userId: req.userId });
 });
 
-module.exports = {isValidUser: authMiddlerWare, router};
+module.exports = { isValidUser: authMiddlerWare, router };
