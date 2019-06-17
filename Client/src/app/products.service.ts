@@ -11,23 +11,23 @@ export class ProductsService {
   baseurl: string = environment.apiUrl;
 
   getAllProducts() {
-    return this.http.get(this.baseurl + 'Products');
+    return this.http.get<Product[]>(this.baseurl + '/Products');
   }
 
   getProductById(id: string) {
-    return this.http.get<Product>(this.baseurl + 'Products' + '/' + id);
+    return this.http.get<Product>(this.baseurl + '/Products' + '/' + id);
   }
 
   addProduct(product: Product) {
-    return this.http.post(this.baseurl + 'Products', product);
+    return this.http.post(this.baseurl + '/Products', product);
   }
 
   deleteProduct(id: string) {
-    return this.http.delete(this.baseurl + 'Products' + '/' + id);
+    return this.http.delete(this.baseurl + '/Products' + '/' + id);
   }
 
   updateProduct(product: Product) {
-    return this.http.put(this.baseurl + 'Products' + '/' + product._id, product);
+    return this.http.put(this.baseurl + '/Products' + '/' + product._id, product);
   }
 
 }
