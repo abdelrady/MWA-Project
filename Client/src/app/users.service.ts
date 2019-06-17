@@ -14,7 +14,16 @@ export class UsersService {
    }
 
    register(user : user){
-      return this.Http.post(`${environment.apiUrl}/users/register`, user);
+      return this.Http.post(`${environment.apiUrl}/auth/signup`, user);
    }
 
+   login(username: string, password: string) {
+    return this.Http.post<any>(`${environment.apiUrl}/auth/login`, { username, password });
+    }
+
+   //    logout() {
+   //    // remove user from local storage to log user out
+   //    localStorage.removeItem('currentUser');
+   //    this.currentUserSubject.next(null);
+   //    }
 }
