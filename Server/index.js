@@ -31,7 +31,7 @@ app
     // .use("/modules", express.static('node_modules'))
     .use("/api/users", usersRoutes)
     .use("/api/products", productRoutes)
-    .use("/api/auth", auth.router)
+    .use("/api/auth", auth)
     .use("/api/images", /*auth.validUser, */(req, res, next) => {
         res.setHeader("Cache-Control", "public, max-age=2592000");
         next();
