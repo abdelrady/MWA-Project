@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UsersService } from './users.service';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,16 @@ import { UsersService } from './users.service';
 })
 export class AppComponent {
   title = 'Client';
+  searchForm;
 
-  constructor(private usersService : UsersService){
+  constructor(private formBuilder: FormBuilder, private usersService : UsersService){
+    this.searchForm = formBuilder.group({
+      'search': ['']
+    });
+    
+  }
+
+  search(){
     
   }
 }
