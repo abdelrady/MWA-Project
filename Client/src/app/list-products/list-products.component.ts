@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../products.service';
 import { Product } from '../product';
 import { Router } from '@angular/router';
-import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -14,12 +14,28 @@ import { HttpClient } from '@angular/common/http';
 
 export class ListProductsComponent implements OnInit {
 
-  products: Product[] = [];
+  private products: Product[] = [
+    {
+      name: "Iphone",
+      company: "Apple",
+      imageId: "bb76"
+    },
+    {
+      name: "Iphone",
+      company: "Apple",
+      imageId: "bb76"
+    },
+    {
+      name: "Iphone",
+      company: "Apple",
+      imageId: "bb76"
+    }
+  ];
   isClicked: boolean = true;
-  serverImagesUrl : String = environment.apiUrl + "/images/";
+  serverImagesUrl: String = environment.apiUrl + "/images/";
 
   constructor(private productService: ProductsService, private router: Router) { }
-  
+
   onClicked(productId) {
     //this.isClicked = !this.isClicked;
     this.router.navigate(["/productDetails/" + productId]);
@@ -27,12 +43,12 @@ export class ListProductsComponent implements OnInit {
   ngOnInit() {
     this.getAllProducts();
   }
-  
+
   getAllProducts(): void {
-    this.productService.getAllProducts().subscribe((data : any) => {
-      if(data.success){
+    this.productService.getAllProducts().subscribe((data: any) => {
+      if (data.success) {
         this.products = data.products;
-      }else{
+      } else {
         // show error message
       }
     });
