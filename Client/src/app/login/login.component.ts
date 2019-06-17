@@ -51,7 +51,6 @@ export class LoginComponent implements OnInit {
                 (data: baseBean<user>) => {
                     if(data.success){
                         this.router.navigate(['./listproducts']);
-
                         this.cookieService.set("token",data.token,new Date(new Date().getTime() + this.time));
                         this.cookieService.set("userName",data.T.userName,new Date(new Date().getTime() + this.time));
 

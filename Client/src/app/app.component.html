@@ -14,13 +14,16 @@
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/listproducts">Products</a>
                 </li>
-                <li class="nav-item">
+                <li *ngIf="login" class="nav-item">
                     <a class="nav-link" routerLink="/login">Login</a>
                 </li>
-                <li class="nav-item">
+                <li *ngIf="login" class="nav-item">
                     <a class="nav-link" routerLink="/register">Register</a>
                 </li>
-                <li class="nav-item">
+                <li *ngIf="logout" class="nav-item">
+                    <p class ="nav-link" > hello {{user.username}}</p>
+                </li>
+                <li *ngIf="logout" class="nav-item">
                     <a class="nav-link" routerLink="/logout">Logout</a>
                 </li>
                 <!-- <li class="nav-item">
