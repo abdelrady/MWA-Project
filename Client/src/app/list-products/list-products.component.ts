@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../products.service';
 import { Product } from '../product';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -13,35 +14,28 @@ import { HttpClient } from '@angular/common/http';
 
 export class ListProductsComponent implements OnInit {
 
-  private products: Product[] = [
-    {
-      name: "Iphone",
-      company: "Apple",
-      imageId: "bb76"
-    },
-    {
-      name: "Iphone",
-      company: "Apple",
-      imageId: "bb76"
-    },
-    {
-      name: "Iphone",
-      company: "Apple",
-      imageId: "bb76"
-    }
-  ];
+  products: Product[] = [];
   isClicked: boolean = true;
+  serverImagesUrl : String = environment.apiUrl + "/images/";
+
   constructor(private productService: ProductsService, private router: Router) { }
-  onClicked() {
-    this.isClicked = !this.isClicked;
+  
+  onClicked(productId) {
+    //this.isClicked = !this.isClicked;
+    this.router.navigate(["/productDetails/" + productId]);
   }
   ngOnInit() {
-    // this.getAllProducts();
+    this.getAllProducts();
   }
-  //getAllProducts(): void {
-  //   this.productService.getAllProducts().subscribe(data => {
-  //     this.products = data;
-  //   });
-  // };
+  
+  getAllProducts(): void {
+    this.productService.getAllProducts().subscribe((data : any) => {
+      if(data.success){
+        this.products = data.products;
+      }else{
+        // show error message
+      }
+    });
+  };
 
 }

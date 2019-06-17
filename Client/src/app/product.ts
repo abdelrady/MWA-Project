@@ -1,6 +1,6 @@
 export class Product {
     _id?: Object;
-    tags: String;
+    tags?: String;
     name: string;
     description?: string;
     quantity?: number;
