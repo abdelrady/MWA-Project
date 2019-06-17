@@ -1,7 +1,7 @@
 export class Product {
     //ErrorMsg:String;
     _id?: Object;
-    tags: String;
+    tags?: String;
     name: string;
     description?: string;
     quantity?: number;

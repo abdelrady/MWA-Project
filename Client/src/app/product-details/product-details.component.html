@@ -1,24 +1,17 @@
-<div class='panel panel-info' *ngIf='mobile'>
-    <div class='panel-heading' style='font-size:large'>
-        {{ mobile.name }}
+<h2 class="jumbotron-heading">PRODUCT DETAILS</h2>
+<div class='row'>
+    <div class='col-md-6'>
+        <img class='center-block img-responsive' [style.width.px]='200' [style.margin.px]='2'
+            src="{{serverImagesUrl + product.imageId}}">
     </div>
-    <div class='panel-body'>
-
+    <div class='col-md-6'>
         <div class='row'>
-            <div class='col-md-6'>
-                <div class='row'>
-                    <div class='col-md-3'>Name:</div>
-                    <div class='col-md-6'>{{mobile.name}}</div>
-                </div>
-                <div class='row'>
-                    <div class='col-md-3'>Company:</div>
-                    <div class='col-md-6'>{{mobile.company}}</div>
-                </div>
-
-                <div class='col-md-6'>
-                    <img class='center-block img-responsive' [style.width.px]='200' [style.margin.px]='2'
-                        [title]='mobile.imageId'>
-                </div>
-            </div>
+            <div class='col-md-3'>Name:</div>
+            <div class='col-md-3'>{{product.name}}</div>
+        </div>
+        <div class='row'>
+            <div class='col-md-3'>Company:</div>
+            <div class='col-md-3'>{{product.company}}</div>
         </div>
     </div>
+</div>

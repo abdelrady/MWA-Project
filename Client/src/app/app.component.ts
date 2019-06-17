@@ -1,40 +1,40 @@
-import { Component ,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UsersService } from './users.service';
 import { FormBuilder } from '@angular/forms';
-import {TokenService} from './token.service'
+import { TokenService } from './token.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'Client';
   searchForm;
   user;
   logout = false;
   login = false;
-  constructor(private formBuilder: FormBuilder, private tokenService : TokenService){
+  constructor(private formBuilder: FormBuilder, private router: Router, private tokenService: TokenService) {
     this.searchForm = formBuilder.group({
       'search': ['']
     });
 
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.user = this.tokenService.getUserInfo();
-    if(this.user){
-      console.log(this.user.username);
+    if (this.user) {
+      console.log(this.user.firstName);
       //show userinfo
       this.logout = true;
-    }else{
-      this.login  = true;
+    } else {
+      this.login = true;
     }
   }
 
-  search(){
-
+  search() {
+    this.router.navigate(['/search'], { queryParams: { q: this.searchForm.value.search } })
   }
-
 
 }
