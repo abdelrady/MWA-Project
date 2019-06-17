@@ -14,23 +14,7 @@ import { environment } from 'src/environments/environment';
 
 export class ListProductsComponent implements OnInit {
 
-  private products: Product[] = [
-    {
-      name: "Iphone",
-      company: "Apple",
-      imageId: "bb76"
-    },
-    {
-      name: "Iphone",
-      company: "Apple",
-      imageId: "bb76"
-    },
-    {
-      name: "Iphone",
-      company: "Apple",
-      imageId: "bb76"
-    }
-  ];
+  private products: Product[] = [];
   isClicked: boolean = true;
   serverImagesUrl: String = environment.apiUrl + "/images/";
 
