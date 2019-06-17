@@ -5,7 +5,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListProductsComponent } from './list-products/list-products.component';
-import { AddProductComponent } from './add-products/add-products.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductsService } from './products.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -21,7 +20,6 @@ import { LoginComponent } from './account/login/login.component'
   declarations: [
     AppComponent,
     ListProductsComponent,
-    AddProductComponent,
     ProductDetailsComponent,
     ErrorComponent,
     RegisterComponet,
