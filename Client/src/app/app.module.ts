@@ -11,7 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ErrorComponent } from './error-page/error.component'
 import { RegisterComponet} from './register-products/register-products.component'
 import {  ReactiveFormsModule } from '@angular/forms';
-import { EditProductComponent } from './edit-product/edit-product.component'
+import { EditProductComponent } from './edit-product/edit-product.component';
+import {LoginComponent} from './login/login.component'
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import { EditProductComponent } from './edit-product/edit-product.component'
     ErrorComponent,
     RegisterComponet,
     EditProductComponent,
-
+    LoginComponent
   ],
   imports: [
     BrowserModule,

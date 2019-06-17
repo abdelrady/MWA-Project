@@ -16,6 +16,7 @@ export class RegisterComponet implements  OnInit {
     loading = false;
     submitted = false;
 
+
   constructor(
     private  FormBuilder : FormBuilder,
     private router :Router,
@@ -24,6 +25,7 @@ export class RegisterComponet implements  OnInit {
   ){
 
   }
+
 
   ngOnInit(){
     this.registerForm = this.FormBuilder.group({
@@ -44,12 +46,14 @@ export class RegisterComponet implements  OnInit {
       return;
     }
     this.loading  = true;
-    console.log(this.registerForm.value)
     this.userService.register(this.registerForm.value)
         .pipe(first())
         .subscribe(
           data=>{
-            this.router.navigate(['./login']);
+            // this.user = data;
+              console.log("1");
+            // this.router.navigate(['./login']);
+            this.loading = false;
             // TODO: return home page
           },
           error=>{

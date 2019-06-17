@@ -22,16 +22,18 @@ const authMiddlerWare = (req, res, next) => {
 router.post("/signup", async (req, res, next) => {
     // TODO make sure password & confirm-password are equal
     const hash = await bcrypt.hash(req.body.password, saltRounds);
+    console.log(req.body.firstName);
     let user = new User({
         password: hash,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
         isAdmin: req.body.isAdmin,
+        username : req.body.username,
         cartItems: []
     });
     await user.save();
-    res.status(201).end();
+    res.status(201).json({ success: true , user}).end();
 });
 
 router.post("/login", async (req, res, next) => {
