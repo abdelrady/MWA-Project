@@ -6,7 +6,7 @@ import { ListProductsComponent } from './list-products/list-products.component';
 
 import { ErrorComponent } from './error-page/error.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
- import { LoginComponent } from './account/login/login.component';
+import { LoginComponent } from './account/login/login.component';
 import { SearchComponent } from './components/product/search/search.component';
 
 
