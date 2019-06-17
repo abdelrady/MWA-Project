@@ -13,5 +13,17 @@ router.get("/all", (req, res, next) => {
                 error: err
             }))
 })
+router.get("/all/:id", (req, res) => {
+    Product.find({ id: req.params.id })
+        .exec()
+        .then(products => res.status(200).json({ success: true, products }))
+        .catch(err => res.status(500)
+            .json({
+                success: false,
+                message: 'Error finding users',
+                error: err
+            }))
+
+})
 
 module.exports = router;
