@@ -1,8 +1,14 @@
 <div class="col-md-3">
   <h2 class="text-center" *ngIf="productId">Edit Product</h2>
+  
   <h2 class="text-center" *ngIf="!productId">Add Product</h2>
-  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
 
+      <h6 class="text-center"  *ngIf="errorMsg">{{errorMsg}}</h6>
+  
+  
+  <form [formGroup]="editForm" *ngIf="!errorMsg" (ngSubmit)="onSubmit()">
+      
+      
     <div class="form-group">
       <label>Tag:</label>
       <input type="text" formControlName="tags" placeholder="tag number" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.description.errors }">
@@ -13,9 +19,9 @@
 
     <div class="form-group">
       <label>Name:</label>
-      <input type="text" formControlName="price" placeholder="product name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.price.errors }">
-      <div *ngIf="submitted && f.price.errors">
-        <div *ngIf="f.price.errors.required">Price is required</div>
+      <input type="text" formControlName="name" placeholder="product name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.price.errors }">
+      <div *ngIf="submitted && f.name.errors">
+        <div *ngIf="f.name.errors.required">Name is required</div>
       </div>
     </div>
 
@@ -52,6 +58,6 @@
   </div>
 </div> -->
 
-    <button type="submit"  class="btn btn-info">Save</button>
+    <input type="submit"  class="btn btn-info" value="Save"/>
   </form>
 </div>

@@ -40,4 +40,18 @@ router.post("/", async (req, res, next) => {
     res.status(201).json({ success: true, product }).end();
 });
 
+router.put("/:id", async (req, res, next) => {
+    let product = await Product.findOne({_id: req.body._id});
+    
+    product.name=req.body.name;
+    product.tag = req.body.tag;
+    product.description = req.body.description;
+    product.quantity = req.body.quantity;
+    product.price = req.body.price;
+    
+
+	await product.save();
+    res.status(200).json({ success: true, product }).end();
+});
+
 module.exports = router;

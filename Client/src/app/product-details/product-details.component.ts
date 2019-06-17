@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../product';
+import { Product } from '../Product';
 
 @Component({
   selector: 'app-product-details',
@@ -10,6 +10,7 @@ export class ProductDetailsComponent implements OnInit {
   private mobile: Product = {
     name: "Iphone",
     company: "Apple",
+    tags:"sasdf",
     imageId: "bb76"
   }
 
