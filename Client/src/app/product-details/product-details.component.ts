@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { product } from '../product';
+import { Product } from '../product';
 
 @Component({
   selector: 'app-product-details',
@@ -7,7 +7,7 @@ import { product } from '../product';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
-  private mobile: product = {
+  private mobile: Product = {
     name: "Iphone",
     company: "Apple",
     imageId: "bb76"
