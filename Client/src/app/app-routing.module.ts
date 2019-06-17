@@ -14,7 +14,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 const routes: Routes = [
   { path: "", redirectTo: "listproducts", pathMatch: 'full' },
   { path: "listproducts", component: ListProductsComponent },
-  { path: "productDetails", component: ProductDetailsComponent },
+  { path: "productDetails/:id", component: ProductDetailsComponent },
   { path: "error", component: ErrorComponent },
   { path: "signup", component: RegisterComponet },
   { path: "editProduct/:id", component: EditProductComponent },
