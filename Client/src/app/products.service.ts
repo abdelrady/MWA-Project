@@ -7,11 +7,22 @@ import { product } from './product'
 
 @Injectable({ providedIn: 'root' })
 export class ProductsService {
+
   constructor(private http: HttpClient) { }
   baseurl: string = environment.apiUrl;
 
+  searchProducts(searchTerm?: string) {
+    var options = searchTerm ? {
+      params: {
+        q: searchTerm
+      }/*,
+      observe: 'response'*/
+    } : {};
+    return this.http.get<product[]>(this.baseurl + '/Products/all', options);
+  }
+
   getAllProducts() {
-    return this.http.get<product[]>(this.baseurl + '/Products');
+    return this.searchProducts();
   }
 
   getProductById(id: string) {
@@ -27,7 +38,8 @@ export class ProductsService {
   }
 
   updateProduct(product: product) {
-    return this.http.put(this.baseurl + '/Products' + '/' + product._id, product);
+    console.log(product)
+       return this.http.put(this.baseurl + '/Products' + '/' + product._id, product)
   }
 
 }

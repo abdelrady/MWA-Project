@@ -13,12 +13,12 @@ content-type: application/json
 
 ###
 GET http://localhost:8080/api/auth/test HTTP/1.1
-Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc0FkbWluIjp0cnVlLCJfaWQiOiI1ZDA2YzQ1NzVjZDNlYTFkMWMyNDJmNWUiLCJmaXJzdE5hbWUiOiJBYmRlbHJhZHkiLCJsYXN0TmFtZSI6IlRhbnRhd3kiLCJlbWFpbCI6ImF0YW50YXd5QG11bS5lZHUiLCJfX3YiOjAsImlhdCI6MTU2MDcyNDcyM30.O-Gv1CrDdpRUxrpmTJiHMCjAgba8oQi4EJ_Ne8Jxd82j_EEzEI27Cpy9GycI_BzxOTrouatseL_upHbvzuH0bg
 
 ###
 
 
 POST http://localhost:8080/api/products/ HTTP/1.1
 content-type: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc0FkbWluIjp0cnVlLCJfaWQiOiI1ZDA2YzQ1NzVjZDNlYTFkMWMyNDJmNWUiLCJmaXJzdE5hbWUiOiJBYmRlbHJhZHkiLCJsYXN0TmFtZSI6IlRhbnRhd3kiLCJlbWFpbCI6ImF0YW50YXd5QG11bS5lZHUiLCJfX3YiOjAsImlhdCI6MTU2MDcyNDcyM30.O-Gv1CrDdpRUxrpmTJiHMCjAgba8oQi4EJ_Ne8Jxd82j_EEzEI27Cpy9GycI_BzxOTrouatseL_upHbvzuH0bg
 
-{"name":"123","description":"desc", "tags" : "labrops electronics US", "quantity": 10, "price": 15.5, "imageId": null, "company": "Apple"}
+{"name":"567","description":"desc", "tags" : "electronics UK", "quantity": 10, "price": 15.5, "imageId": null, "company": "Apple"}

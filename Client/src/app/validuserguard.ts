@@ -14,7 +14,6 @@ export class ValidUserGuard implements CanActivate{
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : Observable<boolean> | boolean {
-
     return this.admin;
   }
 }
