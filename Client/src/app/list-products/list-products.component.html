@@ -1,16 +1,16 @@
 <section class="jumbotron text-center">
   <div class="container">
-    <h1 class="jumbotron-heading">WelCOME TO OUR MINI AMAZON</h1>
+    <h1 class="jumbotron-heading">WELCOME TO OUR NANO-AMAZON</h1>
     <p class="lead text-muted">A project created by MUM students for MWA course to browse
       catalogs/products/items and to practice Angular/Node/Mongodb frameworks </p>
 
   </div>
 </section>
-<div class="album py-5 bg-light">
+<div class="album bg-light">
   <div class="container">
     <div class="row">
       <div class="col-md-12 warning" *ngIf="!(products).length">No products in system!</div>
-      <div class="col-md-4" *ngFor="let product of products">
+      <div class="col-md-4" *ngFor="let product of products;let i = index">
         <div class="card mb-4 box-shadow">
           <img class="card-img-top" src="{{serverImagesUrl + product.imageId}}" alt="Card image cap">
           <div class="card-body">
@@ -24,7 +24,9 @@
             </div>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
-                <button (click)="onClicked(product._id)">View</button>
+                <button (click)="onClicked(product._id)">View</button>&nbsp;
+                <button (click)="editProduct(product._id)">Edit</button>&nbsp;
+                <button (click)="removeProduct(product._id, i)">Delete</button>
               </div>
 
             </div>
