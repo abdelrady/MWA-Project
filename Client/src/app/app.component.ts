@@ -2,6 +2,7 @@ import { Component ,OnInit } from '@angular/core';
 import { UsersService } from './users.service';
 import { FormBuilder } from '@angular/forms';
 import {TokenService} from './token.service'
+import { user }   from './models/user'
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ import {TokenService} from './token.service'
 export class AppComponent implements OnInit{
   title = 'Client';
   searchForm;
-  user;
+  user : user;
   logout = false;
   login = false;
   constructor(private formBuilder: FormBuilder, private tokenService : TokenService){
