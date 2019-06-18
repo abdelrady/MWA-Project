@@ -14,7 +14,7 @@ import { environment } from 'src/environments/environment';
 
 export class ListProductsComponent implements OnInit {
 
-  private products: Product[] = [];
+  products: Product[] = [];
   isClicked: boolean = true;
   serverImagesUrl: String = environment.apiUrl + "/images/";
 

@@ -5,7 +5,7 @@
             src="{{serverImagesUrl + product.imageId}}">
     </div>
     <div class='col-md-6'>
-        <div class='row'>
+        <div class='row' style="font-weight: bold">
             <div class='col-md-3'>Name:</div>
             <div class='col-md-3'>{{product.name}}</div>
         </div>
@@ -21,15 +21,11 @@
         </div>
         <div class='row'>
             <div class='col-md-3'>Price:</div>
-            <div class='col-md-3'>{{product.price}}</div>
+            <div class='col-md-3'>${{product.price}}</div>
         </div>
         <div class='row'>
             <div class='col-md-3'>Quantity:</div>
             <div class='col-md-3'>{{product.quantity}}</div>
-        </div>
-        <div class='row'>
-            <div class='col-md-3'>ImageId:</div>
-            <div class='col-md-3'>{{product.imageId}}</div>
         </div>
         <div class='row'>
             <div class='col-md-3'>Description:</div>
