@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { environment } from 'src/environments/environment';
 import { ProductsService } from 'src/app/services/products.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-search',
@@ -11,22 +12,25 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class SearchComponent implements OnInit {
 
-  products : Product[] = [];
-  serverImagesUrl : String = environment.apiUrl + "/images/";
+  isAdmin: Boolean;
+  products: Product[] = [];
+  serverImagesUrl: String = environment.apiUrl + "/images/";
 
-  constructor(private route : ActivatedRoute, private productsService : ProductsService) {
-    route.queryParams.subscribe(query=>{
-        let searchTerm = query['q'];
-        this.productsService.searchProducts(searchTerm)
-        .subscribe((data : any) => {
-          if(data.success){
+  constructor(private tokenservice: TokenService, private route: ActivatedRoute, private productsService: ProductsService) {
+    let user = this.tokenservice.getUserInfo();
+    this.isAdmin = user && user.isAdmin;
+    route.queryParams.subscribe(query => {
+      let searchTerm = query['q'];
+      this.productsService.searchProducts(searchTerm)
+        .subscribe((data: any) => {
+          if (data.success) {
             this.products = data.products;
-          }else{
+          } else {
             // show error message
           }
         });;
     })
-   }
+  }
 
   ngOnInit() {
   }
