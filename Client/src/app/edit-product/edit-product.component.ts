@@ -63,6 +63,7 @@ export class EditProductComponent implements OnInit {
       this.productService.updateProduct(this.editForm.value)
       .subscribe((data : any)=>{
         if(data.success){
+          //redirect to homepage
           this.router.navigate(['']);
          
         }
@@ -71,7 +72,13 @@ export class EditProductComponent implements OnInit {
       ;
     }
     else {
-      // Add
+      // Add product to database
+         this.productService.addProduct(this.editForm.value)
+        .subscribe( data => {
+          console.log(data);
+          this.router.navigate(['']);
+        });
+      
     }
 
   }
