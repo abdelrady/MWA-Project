@@ -11,40 +11,44 @@ import { ProductsService } from '../products.service';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
-  //   productId;
-  //   product: Product;
-  //   editForm;
-  //   errorMsg;
-  //   private product: Product = {
-  //     name: '',
-  //     tags: "",
-  //     company: '',
-  //     price: 0.0,
-  //     description: '',
-  //     imageId: null
-  //   }
+  productId;
+  editForm;
+  errorMsg;
+  serverImagesUrl: string = environment.apiUrl + '/images/';
+
+  product: Product = {
+    name: '',
+    tags: "",
+    company: '',
+    price: 0.0,
+    description: '',
+    imageId: null
+  }
 
 
-  //   constructor(private route: ActivatedRoute, private productService: ProductsService) { }
+  constructor(private route: ActivatedRoute, private productService: ProductsService) {
+    route.params.subscribe((p: any) => {
+      this.productId = p['id'];
+      productService.getProductById(this.productId)
+        .subscribe((data: any) => {
+          // Bind data to UI
+          if (data.success) {
+            this.product = data.product;
+
+          }
+          else {
+            this.errorMsg = "error"
+          }
+        },
+          error => {
+            this.errorMsg = "Item with such id doesn't exist"
+          });
+    });
+  }
+
   ngOnInit() {
   }
-  //   route.params.subscribe(p: any => {
-  //     this.productId = p['id'];
-  //     productService.getProductById(this.productId)
-  //       .subscribe((data: any) => {
-  //         // Bind data to UI
-  //         if (data.success) {
-  //           this.product = data.product;
 
-  //         }
-  //         else {
-  //           this.errorMsg = "error"
-  //         }
-  //       },
-  //         error => {
-  //           this.errorMsg = "Item with such id doesn't exist"
-  //         });
-  //   });
 }
 
 

@@ -21,4 +21,8 @@ Tasks/Plan
 Git Repo
 	https://github.com/abdelrady/MWA-Project
 
-Config/keys are attached.
+Production Urls:
+	Client: https://abdelrady.github.io/MWA-Project/
+	Server: https://mwaserver.azurewebsites.net/
+
+** Config/keys are attached.
