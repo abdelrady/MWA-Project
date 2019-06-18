@@ -1,0 +1,24 @@
+
+Team Members:
+	1- Brhane Weldeslase
+		Email: brhaneweldeslase@mum.edu
+		MumId: 987001
+	2- Efrem S. Debesay
+		Email: edebesay@mum.edu    
+		MumId: 109428
+	3- Li
+
+	4- Abdelrady Tantawy
+		Email: atantawy@mum.edu
+		MumId: 986834
+
+Presentation
+	
+
+Tasks/Plan
+	https://docs.google.com/spreadsheets/d/1mX52vq-ieKJaU28b2W0nCQ50fXwD2PAEKbwii-rMKxQ/edit#gid=0
+
+Git Repo
+	https://github.com/abdelrady/MWA-Project
+
+Config/keys are attached.

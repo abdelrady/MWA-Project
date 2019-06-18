@@ -42,4 +42,9 @@ router.post("/login", async (req, res, next) => {
     }
 });
 
+// Global error handler for this module
+router.use("*", (req, res, next)=>{
+    res.status(500).json({ success: false });
+})
+
 module.exports = router;
