@@ -3,7 +3,7 @@
   
   <h2 class="text-center" *ngIf="!productId">Add Product</h2>
 
-      <h6 class="text-center"  *ngIf="errorMsg">{{errorMsg}}</h6>
+      <h5 class="text-center"  *ngIf="errorMsg">{{errorMsg}}</h5>
   
   
   <form [formGroup]="editForm" *ngIf="!errorMsg" (ngSubmit)="onSubmit()">

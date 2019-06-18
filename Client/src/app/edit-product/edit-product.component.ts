@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../products.service';
 import { product } from '../product';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-edit-product',
@@ -15,7 +16,7 @@ export class EditProductComponent implements OnInit {
   editForm;
   errorMsg;
 
-  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private productService: ProductsService) {
+  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private productService: ProductsService,private router: Router) {
     this.editForm = formBuilder.group({
     
       '_id': [''],
@@ -62,10 +63,10 @@ export class EditProductComponent implements OnInit {
       this.productService.updateProduct(this.editForm.value)
       .subscribe((data : any)=>{
         if(data.success){
-          // show success message and redirect to listproducts
-        }else{
-          // show error
+          this.router.navigate(['']);
+         
         }
+        
       });
       ;
     }
