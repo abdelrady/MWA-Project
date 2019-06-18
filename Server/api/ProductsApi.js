@@ -52,7 +52,7 @@ router.get("/:id", (req, res) => {
 
 })
 
-router.post("/", /*isAdmin, */async (req, res, next) => {
+router.post("/", isAdmin, async (req, res, next) => {
     delete req.body._id;
     let product = new Product({
         ...req.body
@@ -60,7 +60,7 @@ router.post("/", /*isAdmin, */async (req, res, next) => {
     saveImage(res, req.files.image, product, true);
 });
 
-router.put("/:id", async (req, res, next) => {
+router.put("/:id", isAdmin, async (req, res, next) => {
     let product = await Product.findOne({ _id: new mongo.ObjectID(req.params.id) });
 
     product.name = req.body.name;
@@ -72,7 +72,7 @@ router.put("/:id", async (req, res, next) => {
     saveImage(res, req.files.image, product, false);
 });
 
-router.delete("/:id", async (req, res, next) => {
+router.delete("/:id", isAdmin, async (req, res, next) => {
     await Product.findByIdAndRemove({ _id: new mongo.ObjectID(req.params.id) });
     res.status(200).json({ success: true });
 });
