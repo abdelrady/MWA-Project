@@ -36,11 +36,18 @@ app
         res.setHeader("Cache-Control", "public, max-age=2592000");
         next();
     }, imageRoutes)
+    .use("*", (req, res, next)=>{
+        res.status(500).json({ success: false });
+    });
 
 // Global error middle ware
 app.use(function (err, req, res, next) {
     // TODO log to morgan
+    res.status(500).json({ success: false, error: err });
 });
+
+var errorhandler = require('errorhandler')
+app.use(errorhandler())
 
 //  MongoDB connection
 mongoose.connect(config.dbUrl, { useNewUrlParser: true })
@@ -56,3 +63,7 @@ db.once('open', function () {
 app.on('close', function () {
     mongoose.connection.close();
 });
+
+process.on("uncaughtException", (error) => {
+    console.log("error")
+})

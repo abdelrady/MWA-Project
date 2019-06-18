@@ -38,4 +38,21 @@ export class ListProductsComponent implements OnInit {
     });
   };
 
+  editProduct(productId) {
+    this.router.navigate(["/editProduct/", productId]);
+  }
+  
+  removeProduct(productId, index) {
+    if (confirm("Are you sure you want to delete this item?")) {
+      this.productService.deleteProduct(productId)
+        .subscribe((data: any) => {
+          if (data.success) {
+            this.products.splice(index, 1);
+          } else {
+            // show error message
+            alert("An error has occurred. Please try again later.");
+          }
+        }, err => alert("An error has occurred. Please try again later."));
+    }
+  }
 }

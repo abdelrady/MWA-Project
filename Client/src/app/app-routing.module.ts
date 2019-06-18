@@ -20,7 +20,6 @@ const routes: Routes = [
   { path: "editProduct/:id", component: EditProductComponent },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponet },
-  { path: "editProduct", component: EditProductComponent },
   { path: "search", component: SearchComponent },
   { path: "**", redirectTo: "error" }
 ];

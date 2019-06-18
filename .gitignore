@@ -1,7 +1,7 @@
 # keys
 server-config.json
 *.config
-# *.pem
+*.pem
 
 # google drive
 *.ini
