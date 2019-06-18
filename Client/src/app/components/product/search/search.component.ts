@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from 'src/app/products.service';
-import { product } from 'src/app/product';
+import { Product } from 'src/app/product';
 import { environment } from '../../../../environments/environment';
 
 @Component({
@@ -11,7 +11,7 @@ import { environment } from '../../../../environments/environment';
 })
 export class SearchComponent implements OnInit {
 
-  products : product[] = [];
+  products : Product[] = [];
   serverImagesUrl : String = environment.apiUrl + "/images/";
 
   constructor(private route : ActivatedRoute, private productsService : ProductsService) {
