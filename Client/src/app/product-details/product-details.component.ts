@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { product } from '../product';
+import { Product } from '../product';
 //import { Product } from '../product';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute } from '@angular/router';
@@ -11,11 +11,11 @@ import { ProductsService } from '../products.service';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
-  private mobile: product = {
-    name: "Iphone",
-    company: "Apple",
-    tags:"sasdf",
-    imageId: "bb76"
+  private product: Product = {
+    name: "",
+    company: "",
+    tags: "",
+    imageId: null
   }
 
 

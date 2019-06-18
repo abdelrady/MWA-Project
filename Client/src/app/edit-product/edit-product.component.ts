@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../products.service';
-import { product } from '../product';
+import { Product } from '../product';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -11,13 +11,13 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class EditProductComponent implements OnInit {
   productId;
-  product: product;
+  product: Product;
   editForm;
   errorMsg;
 
   constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private productService: ProductsService) {
     this.editForm = formBuilder.group({
-    
+
       '_id': [''],
       'name': ['', Validators.required],
       'tags': [''],
@@ -27,7 +27,7 @@ export class EditProductComponent implements OnInit {
       'imageId': [''],
       'company': ['', Validators.required]
     });
-    
+
 
     route.params.subscribe(p => {
       this.productId = p['id'];
@@ -39,12 +39,12 @@ export class EditProductComponent implements OnInit {
             this.editForm.setValue(this.product);
           }
           else {
-         this.errorMsg="error"
+            this.errorMsg = "error"
           }
         },
-        error=>{
-          this.errorMsg="Item with such id doesn't exist"
-        }
+          error => {
+            this.errorMsg = "Item with such id doesn't exist"
+          }
         );
     });
   }
@@ -58,15 +58,15 @@ export class EditProductComponent implements OnInit {
       console.log("this.productId");
       // Update
       console.log(this.editForm.error);
-      
+
       this.productService.updateProduct(this.editForm.value)
-      .subscribe((data : any)=>{
-        if(data.success){
-          // show success message and redirect to listproducts
-        }else{
-          // show error
-        }
-      });
+        .subscribe((data: any) => {
+          if (data.success) {
+            // show success message and redirect to listproducts
+          } else {
+            // show error
+          }
+        });
       ;
     }
     else {
