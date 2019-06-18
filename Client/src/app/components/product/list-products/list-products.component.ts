@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from '../products.service';
-import { Product } from '../product';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { Product } from 'src/app/models/product';
 import { environment } from 'src/environments/environment';
+import { ProductsService } from 'src/app/services/products.service';
+import { TokenService } from 'src/app/services/token.service';
 
 
 @Component({
@@ -13,12 +13,15 @@ import { environment } from 'src/environments/environment';
 })
 
 export class ListProductsComponent implements OnInit {
-
+  isAdmin: Boolean;
   products: Product[] = [];
   isClicked: boolean = true;
   serverImagesUrl: String = environment.apiUrl + "/images/";
 
-  constructor(private productService: ProductsService, private router: Router) { }
+  constructor(private tokenservice : TokenService, private productService: ProductsService, private router: Router) { 
+    let user = this.tokenservice.getUserInfo();
+    this.isAdmin =  user && user.isAdmin;
+  }
 
   onClicked(productId) {
     //this.isClicked = !this.isClicked;
@@ -38,10 +41,14 @@ export class ListProductsComponent implements OnInit {
     });
   };
 
+  addNew() {
+    this.router.navigate(["/addProduct/"]);
+  }
+
   editProduct(productId) {
     this.router.navigate(["/editProduct/", productId]);
   }
-  
+
   removeProduct(productId, index) {
     if (confirm("Are you sure you want to delete this item?")) {
       this.productService.deleteProduct(productId)

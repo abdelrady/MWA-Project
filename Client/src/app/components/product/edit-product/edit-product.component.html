@@ -1,0 +1,80 @@
+<br/>
+<div class="col-md-3">
+  <h2 class="text-center" *ngIf="productId">Edit Product</h2>
+  
+  <h2 class="text-center" *ngIf="!productId">Add Product</h2>
+
+      <h5 class="text-center"  *ngIf="errorMsg">{{errorMsg}}</h5>
+  
+  
+  <form [formGroup]="editForm" *ngIf="!errorMsg" (ngSubmit)="onSubmit()">
+      
+    <div class="form-group">
+      <label>Name:</label>
+      <input type="text" formControlName="name" placeholder="product name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+      <div *ngIf="submitted && f.name.errors">
+        <div *ngIf="f.name.errors.required">Name is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+        <label>Description:</label>
+        <input type="text" formControlName="description" placeholder="Description" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.description.errors }">
+        <div *ngIf="submitted && f.description.errors">
+          <div *ngIf="f.description.errors.required">Description is required</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label>Quantity:</label>
+      <input type="number" formControlName="quantity" placeholder="Quantity" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.quantity.errors }">
+      <div *ngIf="submitted && f.quantity.errors">
+        <div *ngIf="f.quantity.errors.required">Quantity is required</div>
+      </div>
+  </div>
+
+
+  <div class="form-group">
+    <label>Price:</label>
+    <input type="number" formControlName="price" placeholder="Price" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.company.errors }">
+    <div *ngIf="submitted && f.price.errors">
+      <div *ngIf="f.price.errors.required">Price is required</div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label>Company:</label>
+    <input type="text" formControlName="company" placeholder="company" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.company.errors }">
+    <div *ngIf="submitted && f.company.errors">
+      <div *ngIf="f.company.errors.required">Description is required</div>
+    </div>
+  </div>
+
+<div class="form-group">
+    <label>Tags:</label>
+    <input type="text" formControlName="tags" placeholder="tags" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tags.errors }">
+    <div *ngIf="submitted && f.tags.errors">
+      <div *ngIf="f.tags.errors.required">Description is required</div>
+    </div>
+  </div>
+
+<div class="form-group">
+    <app-file-upload formControlName="image"></app-file-upload>
+    <div class="invalid-feedback" style="display: block">
+      <ng-container *ngIf="hasError('image', 'required')">This field is required</ng-container>
+      <ng-container *ngIf="hasError('image', 'requiredFileType')">Only Images (png, bmp, jpg)</ng-container>
+    </div>
+  </div>
+
+<!-- 
+<div class="form-group">
+  <label>ImageId:</label>
+  <input type="text" formControlName="company" placeholder="ImageId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.company.errors }">
+  <div *ngIf="submitted && f.company.errors">
+    <div *ngIf="f.company.errors.required">Company is required</div>
+  </div>
+</div> -->
+
+    <input type="submit"  class="btn btn-info" value="Save"/>
+  </form>
+</div>

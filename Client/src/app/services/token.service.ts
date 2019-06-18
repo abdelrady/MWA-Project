@@ -9,16 +9,28 @@ export class TokenService {
 
   save(token: any) {
     localStorage.setItem("token", token);
+    this.subscribers.forEach(callback => callback());
   }
 
-  get(){
+  get() {
     return localStorage.getItem("token");
   }
 
-  getUserInfo(){
+  delete() {
+    localStorage.removeItem("token");
+    console.log(this.subscribers)
+    this.subscribers.forEach(callback => callback());
+  }
+
+  getUserInfo() {
     let token = this.get();
-    if(!token) return null;
+    if (!token) return null;
     let payload = token.split(".")[1];
     return JSON.parse(atob(payload));
+  }
+
+  subscribers = [];
+  subscribeForChanges(callback) {
+    this.subscribers.push(callback);
   }
 }

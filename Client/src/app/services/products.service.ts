@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { environment } from './../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Product } from './product'
+import { environment } from 'src/environments/environment';
+import { Product } from '../models/product';
 
 
 
@@ -30,7 +30,7 @@ export class ProductsService {
   }
 
   addProduct(product: Product) {
-    return this.http.post(this.baseurl + '/Products', product);
+    return this.http.post(this.baseurl + '/Products', this.toFormData(product));
   }
 
   deleteProduct(id: string) {
@@ -39,7 +39,17 @@ export class ProductsService {
 
   updateProduct(product: Product) {
     console.log(product)
-    return this.http.put(this.baseurl + '/Products' + '/' + product._id, product)
+    return this.http.put(this.baseurl + '/Products' + '/' + product._id, this.toFormData(product))
   }
 
+  toFormData<T>(formValue: T) {
+    const formData = new FormData();
+
+    for (const key of Object.keys(formValue)) {
+      const value = formValue[key];
+      formData.append(key, value);
+    }
+
+    return formData;
+  }
 }

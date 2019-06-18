@@ -1,12 +1,8 @@
-import {baseBean} from './baseBean'
-export class user extends baseBean<user> {
-    id: number;
-    username: string;
+export class user {
+    _id: string;
     password: string;
     firstName: string;
     lastName: string;
-    token: string;
     email: string;
-    admin: string; //1 ture  0 fales
-    tocken : string;
+    isAdmin: Boolean; //1 ture  0 fales
 }
