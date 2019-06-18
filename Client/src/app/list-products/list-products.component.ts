@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../products.service';
-import { product } from '../product';
+import { Product } from '../product';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -14,7 +14,7 @@ import { environment } from 'src/environments/environment';
 
 export class ListProductsComponent implements OnInit {
 
-  private products: product[] = [];
+  private products: Product[] = [];
   isClicked: boolean = true;
   serverImagesUrl: String = environment.apiUrl + "/images/";
 
