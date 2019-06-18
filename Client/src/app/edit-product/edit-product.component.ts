@@ -13,9 +13,11 @@ export class EditProductComponent implements OnInit {
   productId;
   product: product;
   editForm;
+  errorMsg;
 
   constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private productService: ProductsService) {
     this.editForm = formBuilder.group({
+    
       '_id': [''],
       'name': ['', Validators.required],
       'tags': [''],
@@ -25,6 +27,7 @@ export class EditProductComponent implements OnInit {
       'imageId': [''],
       'company': ['', Validators.required]
     });
+    
 
     route.params.subscribe(p => {
       this.productId = p['id'];
@@ -36,9 +39,13 @@ export class EditProductComponent implements OnInit {
             this.editForm.setValue(this.product);
           }
           else {
-            // show error in UI
+         this.errorMsg="error"
           }
-        });
+        },
+        error=>{
+          this.errorMsg="Item with such id doesn't exist"
+        }
+        );
     });
   }
 
@@ -48,7 +55,19 @@ export class EditProductComponent implements OnInit {
 
   onSubmit() {
     if (this.productId) {
+      console.log("this.productId");
       // Update
+      console.log(this.editForm.error);
+      
+      this.productService.updateProduct(this.editForm.value)
+      .subscribe((data : any)=>{
+        if(data.success){
+          // show success message and redirect to listproducts
+        }else{
+          // show error
+        }
+      });
+      ;
     }
     else {
       // Add
