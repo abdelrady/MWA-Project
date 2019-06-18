@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { product } from '../product';
-//import { Product } from '../product';
+import { Product } from '../product';
+
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../products.service';
@@ -11,16 +11,43 @@ import { ProductsService } from '../products.service';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
-  private mobile: product = {
-    name: "Iphone",
-    company: "Apple",
-    tags:"sasdf",
-    imageId: "bb76"
-  }
+  //   productId;
+  //   product: Product;
+  //   editForm;
+  //   errorMsg;
+  //   private product: Product = {
+  //     name: '',
+  //     tags: "",
+  //     company: '',
+  //     price: 0.0,
+  //     description: '',
+  //     imageId: null
+  //   }
 
 
-
+  //   constructor(private route: ActivatedRoute, private productService: ProductsService) { }
   ngOnInit() {
   }
+  //   route.params.subscribe(p: any => {
+  //     this.productId = p['id'];
+  //     productService.getProductById(this.productId)
+  //       .subscribe((data: any) => {
+  //         // Bind data to UI
+  //         if (data.success) {
+  //           this.product = data.product;
 
+  //         }
+  //         else {
+  //           this.errorMsg = "error"
+  //         }
+  //       },
+  //         error => {
+  //           this.errorMsg = "Item with such id doesn't exist"
+  //         });
+  //   });
 }
+
+
+
+
+

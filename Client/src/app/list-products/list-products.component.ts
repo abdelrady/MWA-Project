@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../products.service';
-import { product } from '../product';
+import { Product } from '../product';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -14,7 +14,7 @@ import { environment } from 'src/environments/environment';
 
 export class ListProductsComponent implements OnInit {
 
-  private products: product[] = [];
+  private products: Product[] = [];
   isClicked: boolean = true;
   serverImagesUrl: String = environment.apiUrl + "/images/";
 
@@ -38,4 +38,21 @@ export class ListProductsComponent implements OnInit {
     });
   };
 
+  editProduct(productId) {
+    this.router.navigate(["/editProduct/", productId]);
+  }
+  
+  removeProduct(productId, index) {
+    if (confirm("Are you sure you want to delete this item?")) {
+      this.productService.deleteProduct(productId)
+        .subscribe((data: any) => {
+          if (data.success) {
+            this.products.splice(index, 1);
+          } else {
+            // show error message
+            alert("An error has occurred. Please try again later.");
+          }
+        }, err => alert("An error has occurred. Please try again later."));
+    }
+  }
 }
