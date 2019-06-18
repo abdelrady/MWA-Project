@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../product';
 
-import { environment } from 'src/environments/environment';
 import { ActivatedRoute } from '@angular/router';
-import { ProductsService } from '../products.service';
+import { environment } from 'src/environments/environment';
+import { Product } from 'src/app/models/product';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-product-details',

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductsService } from 'src/app/products.service';
-import { Product } from 'src/app/product';
-import { environment } from '../../../../environments/environment';
+import { Product } from 'src/app/models/product';
+import { environment } from 'src/environments/environment';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-search',
-  templateUrl: '../../../list-products/list-products.component.html',
+  templateUrl: '../list-products/list-products.component.html',
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {

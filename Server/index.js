@@ -15,12 +15,12 @@ const auth = require("./api/AuthApi");
 const imageRoutes = require("./api/ImagesApi");
 const config = require("./server-config")
 
-const logFileStream = fs.createWriteStream(path.join(__dirname, "access.log"), { encoding: "utf8" });
+// const logFileStream = fs.createWriteStream(path.join(__dirname, "access.log"), { encoding: "utf8" });
 const app = express();
 
 app
     .use(cors())
-    .use(logger("common", { stream: logFileStream }))
+    // .use(logger("common", { stream: logFileStream }))
     .use(helmet())
     .use(compression())
     .use(express.json())

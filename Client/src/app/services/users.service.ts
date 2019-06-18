@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
-import { environment } from './../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { user } from './models';
 import { TokenService } from './token.service';
-import { CookieService } from 'ngx-cookie-service';
-
+import { environment } from 'src/environments/environment';
+import { user } from 'src/app/models/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  constructor(private Http: HttpClient, private tokenService: TokenService,private cookieService : CookieService) {
+  constructor(private Http: HttpClient, private tokenService: TokenService) {
     console.log(environment.apiUrl);
   }
 
@@ -35,9 +33,9 @@ export class UsersService {
     return this.Http.post<any>(`${environment.apiUrl}/auth/login`, { username, password });
   }
 
-     logout() {
-     // remove user from local storage to log user out
-     this.cookieService.delete("token");
-     }
+  logout() {
+    // remove user from local storage to log user out
+    return this.tokenService.delete();
+  }
 
 }

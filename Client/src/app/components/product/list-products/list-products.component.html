@@ -9,6 +9,12 @@
 <div class="album bg-light">
   <div class="container">
     <div class="row">
+      <div class="col-md-10"></div>
+      <div class="col-md-2">
+        <button class="btn btn-primary" (click)="addNew()" *ngIf="isAdmin">Add New</button>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-md-12 warning" *ngIf="!(products).length">No products in system!</div>
       <div class="col-md-4" *ngFor="let product of products;let i = index">
         <div class="card mb-4 box-shadow">
@@ -24,9 +30,9 @@
             </div>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
-                <button (click)="onClicked(product._id)">View</button>&nbsp;
-                <button (click)="editProduct(product._id)">Edit</button>&nbsp;
-                <button (click)="removeProduct(product._id, i)">Delete</button>
+                <button class="btn btn-primary" (click)="onClicked(product._id)">View</button>&nbsp;
+                <button class="btn btn-info" (click)="editProduct(product._id)" *ngIf="isAdmin">Edit</button>&nbsp;
+                <button class="btn btn-danger" (click)="removeProduct(product._id, i)" *ngIf="isAdmin">Delete</button>
               </div>
 
             </div>
