@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../products.service';
-import { Product } from '../product';
+import { product } from '../product';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
@@ -13,7 +13,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class ListProductsComponent implements OnInit {
 
-  private products: Product[] = [
+  private products: product[] = [
     {
       name: "Iphone",
       company: "Apple",
