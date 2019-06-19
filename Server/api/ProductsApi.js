@@ -4,12 +4,12 @@ const Product = require("../model/Product");
 const { isAdmin } = require("../middlewares/hasAccess");
 const Image = require("../model/Image");
 
-const deleteImage = async (imageId) =>{
-    await Image.findOneAndDelete({_id: new mongo.ObjectID(imageId)}).exec();
+const deleteImage = async (imageId) => {
+    await Image.findOneAndDelete({ _id: new mongo.ObjectID(imageId) }).exec();
 };
 
-const saveImage = async (res, file, product, isNew)=>{
-    if(product.imageId){
+const saveImage = async (res, file, product, isNew) => {
+    if (product.imageId) {
         await deleteImage(product.imageId);
     }
     let img = new Image({ ...file });
@@ -57,7 +57,12 @@ router.post("/", isAdmin, async (req, res, next) => {
     let product = new Product({
         ...req.body
     });
-    saveImage(res, req.files.image, product, true);
+    if (req.files && req.files.image) {
+        saveImage(res, req.files.image, product, true);
+    }else{
+        await product.save();
+        res.status(201).json({ success: true, product }).end();
+    }
 });
 
 router.put("/:id", isAdmin, async (req, res, next) => {
@@ -69,7 +74,12 @@ router.put("/:id", isAdmin, async (req, res, next) => {
     product.quantity = req.body.quantity;
     product.price = req.body.price;
 
-    saveImage(res, req.files.image, product, false);
+    if (req.files && req.files.image) {
+        saveImage(res, req.files.image, product, false);
+    }else{
+        await product.save();
+        res.status(200).json({ success: true, product }).end();
+    }
 });
 
 router.delete("/:id", isAdmin, async (req, res, next) => {
