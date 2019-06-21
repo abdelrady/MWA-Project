@@ -18,6 +18,7 @@ import { LoginComponent } from './components/account/login/login.component';
 import { LogoutComponent } from './components/account/logout/logout.component';
 import { ValidUserGuard } from './valid.user.guard';
 import { FileUploadComponent } from './components/product/file-upload/file-upload.component';
+import { FilterPipe } from './filter.pipe';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { FileUploadComponent } from './components/product/file-upload/file-uploa
     LoginComponent,
     LogoutComponent,
     FileUploadComponent,
-    SearchComponent
+    SearchComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

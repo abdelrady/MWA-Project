@@ -4,6 +4,7 @@ import { Product } from 'src/app/models/product';
 import { environment } from 'src/environments/environment';
 import { ProductsService } from 'src/app/services/products.service';
 import { TokenService } from 'src/app/services/token.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -17,10 +18,17 @@ export class ListProductsComponent implements OnInit {
   products: Product[] = [];
   isClicked: boolean = true;
   serverImagesUrl: String = environment.apiUrl + "/images/";
+  searchGroup : FormGroup;
+  term : String = '';
 
-  constructor(private tokenservice : TokenService, private productService: ProductsService, private router: Router) { 
+  constructor(private fb : FormBuilder, private tokenservice : TokenService, private productService: ProductsService, private router: Router) { 
     let user = this.tokenservice.getUserInfo();
     this.isAdmin =  user && user.isAdmin;
+
+    this.searchGroup = fb.group({
+      'searchTerm': ['']
+    });
+
   }
 
   onClicked(productId) {
@@ -61,5 +69,10 @@ export class ListProductsComponent implements OnInit {
           }
         }, err => alert("An error has occurred. Please try again later."));
     }
+  }
+
+  searchOnSubmit(){
+    this.term = this.searchGroup.value.searchTerm;
+    console.log({'onSubmit': this.term})
   }
 }

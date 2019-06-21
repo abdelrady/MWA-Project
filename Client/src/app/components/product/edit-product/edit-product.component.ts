@@ -89,8 +89,3 @@ export class EditProductComponent implements OnInit {
 
 }
 
-export function markAllAsDirty(form: FormGroup) {
-  for (const control of Object.keys(form.controls)) {
-    form.controls[control].markAsDirty();
-  }
-}
