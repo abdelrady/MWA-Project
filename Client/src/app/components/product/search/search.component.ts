@@ -15,6 +15,7 @@ export class SearchComponent implements OnInit {
   isAdmin: Boolean;
   products: Product[] = [];
   serverImagesUrl: String = environment.apiUrl + "/images/";
+  searchTerm : String = '';
 
   constructor(private tokenservice: TokenService, private route: ActivatedRoute, private productsService: ProductsService) {
     let user = this.tokenservice.getUserInfo();
@@ -35,4 +36,7 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
   }
 
+  searchTermChanged($event){
+    this.searchTerm = $event.target.value;
+  }
 }

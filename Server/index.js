@@ -8,7 +8,6 @@ const mongoose = require('mongoose')
 const compression = require('compression')
 const fileUpload = require('express-fileupload');
 const responseTime = require('response-time')
-
 const usersRoutes = require("./api/UsersApi");
 const productRoutes = require("./api/ProductsApi");
 const auth = require("./api/AuthApi");
@@ -27,8 +26,6 @@ app
     .use(express.urlencoded())
     .use(fileUpload())
     .use(responseTime())
-    .use("/static", express.static('static'))
-    // .use("/modules", express.static('node_modules'))
     .use("/api/users", usersRoutes)
     .use("/api/products", productRoutes)
     .use("/api/auth", auth)
@@ -36,9 +33,8 @@ app
         res.setHeader("Cache-Control", "public, max-age=2592000");
         next();
     }, imageRoutes)
-    .use("*", (req, res, next)=>{
-        res.status(500).json({ success: false });
-    });
+    .use("/", express.static('static/client'))
+    .use("*", express.static('static/client'));
 
 // Global error middle ware
 app.use(function (err, req, res, next) {
