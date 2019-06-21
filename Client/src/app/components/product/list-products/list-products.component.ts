@@ -18,21 +18,14 @@ export class ListProductsComponent implements OnInit {
   products: Product[] = [];
   isClicked: boolean = true;
   serverImagesUrl: String = environment.apiUrl + "/images/";
-  searchGroup : FormGroup;
-  term : String = '';
+  searchTerm : String = '';
 
   constructor(private fb : FormBuilder, private tokenservice : TokenService, private productService: ProductsService, private router: Router) { 
     let user = this.tokenservice.getUserInfo();
     this.isAdmin =  user && user.isAdmin;
-
-    this.searchGroup = fb.group({
-      'searchTerm': ['']
-    });
-
   }
 
   onClicked(productId) {
-    //this.isClicked = !this.isClicked;
     this.router.navigate(["/productDetails/" + productId]);
   }
   ngOnInit() {
@@ -71,8 +64,7 @@ export class ListProductsComponent implements OnInit {
     }
   }
 
-  searchOnSubmit(){
-    this.term = this.searchGroup.value.searchTerm;
-    console.log({'onSubmit': this.term})
+  searchTermChanged($event){
+    this.searchTerm = $event.target.value;
   }
 }

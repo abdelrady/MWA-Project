@@ -9,21 +9,16 @@
 <div class="album bg-light">
   <div class="container">
     <div class="row">
-      <div class="col-md-10"></div>
+      <div class="col-md-10">
+        <input style="width: 38%" type="text" (input)="searchTermChanged($event)" class="form-control" placeholder="Search..." />
+      </div>
       <div class="col-md-2">
         <button class="btn btn-primary" (click)="addNew()" *ngIf="isAdmin">Add New</button>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12 warning" *ngIf="!(products).length">No products in system!</div>
-      <div class="col-md-8"></div>
-      <div class="col-md-4">
-        <form [formGroup]="searchGroup" (ngSubmit)="searchOnSubmit()">
-          <input type="text" formControlName="searchTerm"/>
-          <input type="submit" value="Search"/>
-        </form> 
-      </div>
-      <div class="col-md-4" *ngFor="let product of (products | filter:term);let i = index">
+      <div class="col-md-4" *ngFor="let product of (products | filter:searchTerm);let i = index">
         <div class="card mb-4 box-shadow">
           <img class="card-img-top" src="{{serverImagesUrl + product.imageId}}" alt="Card image cap">
           <div class="card-body">
